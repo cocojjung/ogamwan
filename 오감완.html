@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJjNWY4YSIvPjxzdG9wIG9mZnNldD0iNDUlIiBzdG9wLWNvbG9yPSIjZmY4YzQyIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmY1ZTYyIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIzMiIgeT0iNDAiIGZvbnQtZmFtaWx5PSInTmFudW0gUGVuIFNjcmlwdCcsJ0hZ6raB7IScQicsJ1NlZ29lIFByaW50JyxjdXJzaXZlIiBmb250LXN0eWxlPSJpdGFsaWMiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmZmY4ZjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuyYpOqwkOyZhDwvdGV4dD48L3N2Zz4K">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAHsklEQVR42u3SeW8s+hzH8d8DIoglCDfcc7qftqftaXu6nM50pst02mk7nU73aTvT6XS7xBIEQSxBEATBDYJcYgmCIIglCIJYgiCIj5zvSe5Zcp/AfPL+4/UMXulZmUs9O3Op52Qv9NzshZ6XPdfzs+d6weyZXjh7phfNtvTiXEsvybX00typXpY71cvzTT2Wb+oV+RO9Mn+ix+cauj7XUMdcQ53zdXXP19Uzf6ze+WP1LRypf+FIAwuHGlw81NBiTcOLNY0s1jRaONBY4UDjhX1NFPY1ubSnqaU9TS/taqa4q0xxV9nijnLFHeWXtzW3vK2F5S0trmypsFJVcaWq5ZWqVkqbKpU2tVaqaH21ovLqhiqrG9pcLau6Vtb2Wlk7a+vaXVvX/vqaDtbXVFtf1VF5VcflkurlkhrlkpobKzrdWFFrY1nnlWVdVIq6rBT1RGVJr9pc0qs3C3rNZkGvrRb0uuqiXl9d1BuqC3rj1oLetDWvN2/N6y1bc3rr9pzetj2nt2/n9Y6dvN65k9O7dnJ6986s3rM7q/fuZvW+3azev5fVB/Yy+uBeRh/am9GH92f0kf07+uj+HX1sf1ofP5jWJw6m9cmDKX2qNqVP1yb1ZG1Sn6lN6LOHE/rc4W19/vC2vnA0ri8ejeupo3F96WhMXz4e01eOR/XV41F9rX5LX6/f0jfqI/pmfUTfaozo241hfacxrO82hvS9kyF9/+SmfnByUz9sDupHzUH9uDmonzQH9NPTAf3stF8/P+3XL1o39MvWDf2q1adft/r0m7M+/fasV78769Xvz3v0h/Me/fG8W38679afL7r0l4su/fWiS3+76NTfLzv1j8sO/fOyQ/+6uq5/X13Xf66u6b9X1/S/Jx6XHnR117X7Lh90Xbp4BucdT0tkJrNL5ghNZjK7ZNZZhxKZyeySOUKTmcwumXXWqURmMrtkjtBkJrNLZrU6lchMZpfMEZrMZHbJHKHJTGaXzBGazGR2yazTLiUyk9klc4QmM5ldMkdoMpPZJXOEJjOZXTJHaDKT2SWzml1KZCazS2Y1u5XITGaXzBGazGR2yRyhyUxml8w66VYiM5ldMkdoMpPZJXOEJjOZXTJHaDKT2SWzGj1KZCazS+YITWYyu2SO0GQms0vmCE1mMrtkjtBkJrNLZtV7lMhMZpfMqvcqkZnMLpkjNJnJ7JI5QpOZzC6ZddyrRGYyu2SO0GQms0vmCE1mMrtk1nGfEpnJ7JJZR31KZCazS+YITWYyu2SO0GQms0vmCE1mMrtk1mGfEpnJ7JJZhzeUyExml8wRmsxkdskcoclMZpfMEZrMZHbJrNoNJTKT2SVzhCYzmV0yq9avRGYyu2SO0GQms0tmHfQrkZnMLpkjNJnJ7JI5QpOZzC6ZIzSZyeySWfsDSmQms0vmCE1mMrtkjtBkJrNL5ghNZjK7ZI7QZCazS2btDSiRmcwumSM0mcnskll7g0pkJrNL5ghNZjK7ZNbuoBKZyeySOUKTmcwumSM0mcnskjlCk5nMLpm1c1OJzGR2yRyhyUxml8wRmsxkdskcoclMZpfM2r6pRGYyu2SO0GQms0tmbQ8pkZnMLpkjNJnJ7JI5QpOZzC6ZtTWkRGYyu2SO0GQms0vmCE1mMrtk1tawEpnJ7JJZ1WElMpPZJXOEJjOZXTJHaDKT2SVzhCYzmV0ya3NYicxkdsmszRElMpPZJXOEJjOZXTJHaDKT2SWzKiNKZCazS+YITWYyu2SO0GQms0tmVW4pkZnMLpkjNJnJ7JJZG7eUyExml8wRmsxkdskcoclMZpfMEZrMZHbJrPKoEpnJ7JI5QpOZzC6ZIzSZyeySOUKTmcwumbU+qkRmMrtkjtBkJrNL5ghNZjK7ZNb6mBKZyeySOUKTmcwumbU2pkRmMrtkjtBkJrNL5ghNZjK7ZI7QZCazS2atjiuRmcwumSM0mcnskjlCk5nMLpkjNJnJ7JJZpXElMpPZJXOEJjOZXTKrdFuJzGR2yRyhyUxml8xaua1EZjK7ZI7QZCazS+YITWYyu2SO0GQms0tmrUwokZnMLpm1PKFEZjK7ZI7QZCazS+YITWYyu2SO0GQms0tmFSeUyExml8wqTiqRmcwumSM0mcnskjlCk5nMLpm1NKlEZjK7ZI7QZCazS+YITWYyu2TW0pQSmcnskjlCk5nMLplVmFIiM5ldMkdoMpPZJXOEJjOZXTJHaDKT2SWzFqeUyExml8xanFYiM5ldMkdoMpPZJXOEJjOZXTJrYVqJzGR2yRyhyUxml8wRmsxkdsmshTtKZCazS2bN31EiM5ldMkdoMpPZJXOEJjOZXTJHaDKT2SVzhCYzmV0ya25GicxkdskcoclMZpfMEZrMZHbJHKHJTGaXzMrPKJGZzC6ZIzSZyeySWfmMEpnJ7JI5QpOZzC6ZlcsokZnMLpkfDk1mMrd55vuhyUxmg8z3QpOZzCaZlcveDU1mMntk1uyDoclM5jbPfD80mclskPleaDKT2STzI6HJTOb2zqzs06HJTOb2z6zs7N3QZCazR+Z7oclMZpPMzxyazGRu08zKPBqazGRu48wPhyYzmds88/3QZCazQWZlckpkJrNLZs08GprMZG7jzA+HJjOZ2zzzXf8H/iRJghrBYboAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="오감완">
+<meta name="theme-color" content="#ff8c42">
+<title>오.감.완 - 오늘 하루 감사 완료</title>
+<style>
+  :root{
+    --sunset-orange:#ff8c42;
+    --sunset-deep:#ff5e62;
+    --sky-blue:#5b9bd5;
+    --sky-deep:#2c5f8a;
+    --paper:#fff8f2;
+    --ink:#3a2e2a;
+    --line:#e8c9b0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(180deg,#2c5f8a 0%,#5b9bd5 22%,#f6a55c 55%,#ff8c42 75%,#ff5e62 100%);
+    background-attachment:fixed;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    padding:32px 16px;
+  }
+  .app{
+    width:100%;
+    max-width:1080px;
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:20px;
+    align-items:start;
+  }
+  @media (max-width:760px){
+    body{padding:16px 10px;}
+    .app{grid-template-columns:1fr; gap:14px;}
+    .sidebar{
+      position:static;
+      max-height:180px;
+      padding:14px;
+    }
+    .card{padding:20px 16px;}
+  }
+  @media (max-width:420px){
+    .title{font-size:24px; letter-spacing:4px;}
+    .section{padding:12px 14px;}
+    button{padding:10px 18px; font-size:13px;}
+  }
+
+  /* Sidebar */
+  .sidebar{
+    background:rgba(255,248,242,0.92);
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 8px 24px rgba(60,30,10,0.25);
+    position:sticky;
+    top:32px;
+    max-height:calc(100vh - 64px);
+    overflow-y:auto;
+  }
+  .sidebar h2{
+    margin:0 0 12px;
+    font-size:16px;
+    color:var(--sky-deep);
+    border-bottom:2px solid var(--sunset-orange);
+    padding-bottom:8px;
+  }
+  #dateList{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  #dateList li{
+    margin-bottom:4px;
+  }
+  #dateList a{
+    display:block;
+    padding:8px 10px;
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:14px;
+    background:transparent;
+    transition:background .15s, color .15s;
+  }
+  #dateList a:hover{
+    background:linear-gradient(90deg,var(--sky-blue),var(--sunset-orange));
+    color:#fff;
+  }
+  #dateList a.active{
+    background:linear-gradient(90deg,var(--sky-deep),var(--sunset-deep));
+    color:#fff;
+    font-weight:bold;
+  }
+  .empty-note{
+    font-size:13px;
+    color:#9a8a80;
+    padding:8px 2px;
+  }
+  #dateList a.more-toggle{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    color:var(--sky-deep);
+    background:rgba(91,155,213,0.12);
+    margin-top:2px;
+  }
+  #dateList a.more-toggle:hover{
+    background:linear-gradient(90deg,var(--sky-blue),var(--sunset-orange));
+    color:#fff;
+  }
+
+  /* Main card */
+  .card{
+    background:rgba(255,248,242,0.95);
+    border-radius:20px;
+    padding:28px 32px;
+    box-shadow:0 10px 30px rgba(60,20,10,0.3);
+  }
+  .title{
+    text-align:center;
+    margin:0 0 4px;
+    font-size:30px;
+    letter-spacing:6px;
+    background:linear-gradient(90deg,var(--sky-deep),var(--sunset-orange),var(--sunset-deep));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    font-weight:900;
+  }
+  .subtitle{
+    text-align:center;
+    margin:0 0 24px;
+    font-size:13px;
+    color:#8a6f5f;
+  }
+
+  .date-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+  }
+  .date-row input[type=number]{
+    width:70px;
+    padding:8px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    text-align:center;
+    font-size:16px;
+  }
+  .date-row input[type=number].day{width:56px;}
+  .date-row span{color:var(--sky-deep);font-weight:bold;}
+
+  .section{
+    margin-bottom:22px;
+    border-radius:14px;
+    padding:16px 18px;
+    background:#fffdfa;
+    border:1px solid var(--line);
+  }
+  .section.morning{
+    border-left:5px solid var(--sky-blue);
+  }
+  .section.night{
+    border-left:5px solid var(--sunset-deep);
+  }
+  .section h3{
+    margin:0 0 12px;
+    font-size:15px;
+    color:var(--sky-deep);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+  }
+  .section.night h3{color:var(--sunset-deep);}
+
+  .rec-controls{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .rec-btn{
+    border:none;
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    padding:0;
+    font-size:14px;
+    line-height:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    background:linear-gradient(135deg,var(--sky-blue),var(--sky-deep));
+    color:#fff;
+    box-shadow:0 3px 8px rgba(0,0,0,0.18);
+    transition:transform .15s;
+  }
+  .rec-btn:hover{transform:translateY(-1px);}
+  .section.night .rec-btn.mic-btn{
+    background:linear-gradient(135deg,var(--sunset-orange),var(--sunset-deep));
+  }
+  .rec-btn.mic-btn.recording{
+    background:#e0393f;
+    animation:pulse 1.2s infinite;
+  }
+  .rec-btn.play-btn{background:linear-gradient(135deg,#8a6f5f,#b0938a);}
+  .rec-btn.del-btn{background:#c9958a;font-size:13px;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(224,57,63,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(224,57,63,0);}
+    100%{box-shadow:0 0 0 0 rgba(224,57,63,0);}
+  }
+  .rec-status{
+    font-size:11px;
+    color:#e0393f;
+    font-weight:normal;
+  }
+
+  .q{
+    margin-bottom:12px;
+  }
+  .q label{
+    display:block;
+    font-size:14px;
+    margin-bottom:6px;
+    color:var(--ink);
+  }
+  .q textarea,
+  .gratitude-list textarea{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:16px;
+    font-family:inherit;
+    background:#fff;
+    resize:none;
+    overflow:hidden;
+    line-height:1.5;
+    display:block;
+  }
+  .q textarea:focus,
+  .gratitude-list textarea:focus{
+    outline:none;
+    border-color:var(--sunset-orange);
+    box-shadow:0 0 0 3px rgba(255,140,66,0.15);
+  }
+
+  .gratitude-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .gratitude-list .grat-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .gratitude-list textarea{flex:1;}
+
+  .comment-section{
+    margin-bottom:20px;
+  }
+  .comment-section h3{
+    margin:0 0 10px;
+    font-size:15px;
+    color:var(--sky-deep);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .photo-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  .photo-item{
+    position:relative;
+    width:72px;
+    height:72px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .photo-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    cursor:pointer;
+  }
+  .photo-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(20,10,5,0.85);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    cursor:zoom-out;
+  }
+  .photo-modal.open{display:flex;}
+  .photo-modal img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:12px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.5);
+  }
+  .photo-modal .photo-modal-close{
+    position:absolute;
+    top:16px;
+    right:20px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    cursor:pointer;
+  }
+  .photo-item .photo-del{
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.55);
+    color:#fff;
+    font-size:12px;
+    line-height:18px;
+    text-align:center;
+    cursor:pointer;
+  }
+  .comment-section textarea{
+    width:100%;
+    min-height:90px;
+    padding:12px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:16px;
+    font-family:inherit;
+    resize:none;
+    overflow:hidden;
+    background:#fff;
+  }
+  .comment-section textarea:focus{
+    outline:none;
+    border-color:var(--sunset-orange);
+    box-shadow:0 0 0 3px rgba(255,140,66,0.15);
+  }
+
+  .btn-row{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  button{
+    border:none;
+    border-radius:24px;
+    padding:11px 26px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#fff;
+    transition:transform .15s, box-shadow .15s;
+  }
+  button:hover{transform:translateY(-2px);}
+  #saveBtn{
+    background:linear-gradient(90deg,var(--sky-deep),var(--sky-blue));
+    box-shadow:0 6px 14px rgba(44,95,138,0.35);
+  }
+  #newBtn{
+    background:linear-gradient(90deg,var(--sunset-orange),var(--sunset-deep));
+    box-shadow:0 6px 14px rgba(255,94,98,0.35);
+  }
+  #deleteBtn{
+    background:#b0938a;
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
+  }
+  .status{
+    text-align:center;
+    font-size:12px;
+    color:#8a6f5f;
+    margin-top:10px;
+    min-height:16px;
+  }
+
+  .sync-box{
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px dashed var(--line);
+    text-align:center;
+  }
+  .sync-box p{
+    margin:0 0 10px;
+    font-size:12px;
+    color:#8a6f5f;
+  }
+  #exportBtn{
+    background:linear-gradient(90deg,#8a6f5f,#b0938a);
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
+  }
+  #importBtn{
+    background:linear-gradient(90deg,var(--sky-blue),var(--sunset-orange));
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <h2>📅 기록 목록</h2>
+    <ul id="dateList"></ul>
+  </aside>
+
+  <main class="card">
+    <h1 class="title">오.감.완</h1>
+    <p class="subtitle">오늘 하루 감사 완료</p>
+
+    <div class="date-row">
+      <input type="number" id="yearInput" placeholder="년" min="2000" max="2100">
+      <span>년</span>
+      <input type="number" id="monthInput" class="day" placeholder="월" min="1" max="12">
+      <span>월</span>
+      <input type="number" id="dayInput" class="day" placeholder="일" min="1" max="31">
+      <span>일</span>
+    </div>
+
+    <div class="section morning">
+      <h3>
+        <span>☀️ 눈떠서</span>
+        <span class="rec-controls">
+          <button type="button" class="rec-btn mic-btn" id="morningMicBtn" title="음성 녹음">🎤</button>
+          <button type="button" class="rec-btn play-btn" id="morningPlayBtn" title="녹음 듣기" style="display:none">🎧</button>
+          <button type="button" class="rec-btn del-btn" id="morningDelBtn" title="녹음 삭제" style="display:none">×</button>
+          <span class="rec-status" id="morningRecStatus"></span>
+          <audio id="morningAudio" style="display:none"></audio>
+        </span>
+      </h3>
+      <div class="q">
+        <label>내가 바라는 나의 모습은 무엇인가?</label>
+        <textarea id="q1" rows="1"></textarea>
+      </div>
+      <div class="q">
+        <label>나는 무슨 일을 좋아하는가?</label>
+        <textarea id="q2" rows="1"></textarea>
+      </div>
+      <div class="q">
+        <label>나의 목표는 무엇인가?</label>
+        <textarea id="q3" rows="1"></textarea>
+      </div>
+    </div>
+
+    <div class="section night">
+      <h3>
+        <span>🌙 잠들기 전</span>
+        <span class="rec-controls">
+          <button type="button" class="rec-btn mic-btn" id="nightMicBtn" title="음성 녹음">🎤</button>
+          <button type="button" class="rec-btn play-btn" id="nightPlayBtn" title="녹음 듣기" style="display:none">🎧</button>
+          <button type="button" class="rec-btn del-btn" id="nightDelBtn" title="녹음 삭제" style="display:none">×</button>
+          <span class="rec-status" id="nightRecStatus"></span>
+          <audio id="nightAudio" style="display:none"></audio>
+        </span>
+      </h3>
+      <div class="q">
+        <label>오늘 감사한 것 9가지</label>
+        <div class="gratitude-list" id="gratitudeList"></div>
+      </div>
+    </div>
+
+    <div class="comment-section">
+      <h3>
+        <span>💬 코멘트</span>
+        <button type="button" class="rec-btn" id="addPhotoBtn" title="사진 첨부">📷</button>
+      </h3>
+      <textarea id="commentBox" placeholder="자유롭게 오늘의 생각을 적어보세요..."></textarea>
+      <div class="photo-list" id="photoList"></div>
+      <input type="file" id="photoInput" accept="image/*" multiple style="display:none">
+    </div>
+
+    <div class="btn-row">
+      <button id="saveBtn">저장하기</button>
+      <button id="newBtn">새 기록</button>
+      <button id="deleteBtn">이 날짜 삭제</button>
+    </div>
+    <div class="status" id="statusMsg"></div>
+
+    <div class="sync-box">
+      <p>다른 기기와 기록을 합치려면: 이 기기에서 내보내기 → 파일 전송(카톡·이메일·클라우드 등) → 다른 기기에서 가져오기</p>
+      <div class="btn-row">
+        <button id="exportBtn">내보내기</button>
+        <button id="importBtn">가져오기</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json" style="display:none">
+    </div>
+  </main>
+</div>
+
+<div class="photo-modal" id="photoModal">
+  <div class="photo-modal-close" id="photoModalClose">×</div>
+  <img id="photoModalImg" src="" alt="">
+</div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'ogamwan_entries';
+
+  const yearInput = document.getElementById('yearInput');
+  const monthInput = document.getElementById('monthInput');
+  const dayInput = document.getElementById('dayInput');
+  const q1 = document.getElementById('q1');
+  const q2 = document.getElementById('q2');
+  const q3 = document.getElementById('q3');
+  const gratitudeList = document.getElementById('gratitudeList');
+  const commentBox = document.getElementById('commentBox');
+  const dateListEl = document.getElementById('dateList');
+  const statusMsg = document.getElementById('statusMsg');
+
+  function autosize(el){
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  // build 9 gratitude textareas
+  for(let i=1;i<=9;i++){
+    const row = document.createElement('div');
+    row.className = 'grat-item';
+    row.innerHTML = '<textarea id="grat'+i+'" rows="1" placeholder="감사한 것"></textarea>';
+    gratitudeList.appendChild(row);
+  }
+
+  // auto-grow every textarea as the user types
+  document.querySelectorAll('.q textarea, .gratitude-list textarea, .comment-section textarea').forEach(function(el){
+    el.addEventListener('input', function(){ autosize(el); });
+  });
+
+  function loadEntries(){
+    try{
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    }catch(e){
+      return {};
+    }
+  }
+  function saveEntries(entries){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  // ---- 음성 녹음 (눈떠서 / 잠들기 전) ----
+  const recordings = {morning:null, night:null};
+
+  function setRecording(key, dataUrl){
+    const audioEl = document.getElementById(key+'Audio');
+    const playBtn = document.getElementById(key+'PlayBtn');
+    const delBtn = document.getElementById(key+'DelBtn');
+    recordings[key] = dataUrl;
+    if(dataUrl){
+      audioEl.src = dataUrl;
+      playBtn.style.display = 'inline-flex';
+      delBtn.style.display = 'inline-flex';
+    } else {
+      audioEl.pause();
+      audioEl.removeAttribute('src');
+      playBtn.style.display = 'none';
+      delBtn.style.display = 'none';
+      playBtn.textContent = '🎧';
+    }
+  }
+
+  function createRecorder(key){
+    const micBtn = document.getElementById(key+'MicBtn');
+    const playBtn = document.getElementById(key+'PlayBtn');
+    const delBtn = document.getElementById(key+'DelBtn');
+    const audioEl = document.getElementById(key+'Audio');
+    const statusEl = document.getElementById(key+'RecStatus');
+    let mediaRecorder = null;
+    let stream = null;
+    let chunks = [];
+
+    micBtn.addEventListener('click', async function(){
+      if(mediaRecorder && mediaRecorder.state === 'recording'){
+        mediaRecorder.stop();
+        return;
+      }
+      if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        statusEl.textContent = '이 브라우저는 녹음을 지원하지 않아요';
+        return;
+      }
+      try{
+        stream = await navigator.mediaDevices.getUserMedia({audio:true});
+      }catch(err){
+        statusEl.textContent = '마이크 권한을 허용해주세요';
+        return;
+      }
+      chunks = [];
+      const mimeCandidates = ['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'];
+      const supportedMime = mimeCandidates.find(function(m){
+        return window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m);
+      });
+      mediaRecorder = supportedMime ? new MediaRecorder(stream, {mimeType: supportedMime}) : new MediaRecorder(stream);
+      mediaRecorder.addEventListener('dataavailable', function(e){
+        if(e.data && e.data.size > 0) chunks.push(e.data);
+      });
+      mediaRecorder.addEventListener('stop', function(){
+        const blob = new Blob(chunks, {type: mediaRecorder.mimeType || supportedMime || 'audio/webm'});
+        const reader = new FileReader();
+        reader.onload = function(){
+          setRecording(key, reader.result);
+        };
+        reader.readAsDataURL(blob);
+        stream.getTracks().forEach(t=>t.stop());
+        micBtn.textContent = '🎤';
+        micBtn.classList.remove('recording');
+        statusEl.textContent = '';
+      });
+      mediaRecorder.start();
+      micBtn.textContent = '⏹';
+      micBtn.classList.add('recording');
+      statusEl.textContent = '녹음 중...';
+    });
+
+    playBtn.addEventListener('click', function(){
+      if(audioEl.paused){
+        audioEl.play();
+        playBtn.textContent = '⏸';
+      } else {
+        audioEl.pause();
+        playBtn.textContent = '🎧';
+      }
+    });
+    audioEl.addEventListener('ended', function(){ playBtn.textContent = '🎧'; });
+
+    delBtn.addEventListener('click', function(){
+      setRecording(key, null);
+    });
+  }
+
+  createRecorder('morning');
+  createRecorder('night');
+
+  // ---- 코멘트 사진 첨부 ----
+  let photos = [];
+  const photoList = document.getElementById('photoList');
+  const photoInput = document.getElementById('photoInput');
+  const photoModal = document.getElementById('photoModal');
+  const photoModalImg = document.getElementById('photoModalImg');
+
+  function openPhotoModal(src){
+    photoModalImg.src = src;
+    photoModal.classList.add('open');
+  }
+  function closePhotoModal(){
+    photoModal.classList.remove('open');
+    photoModalImg.src = '';
+  }
+  photoModal.addEventListener('click', closePhotoModal);
+  document.getElementById('photoModalClose').addEventListener('click', function(e){
+    e.stopPropagation();
+    closePhotoModal();
+  });
+
+  function renderPhotos(){
+    photoList.innerHTML = '';
+    photos.forEach(function(src, idx){
+      const item = document.createElement('div');
+      item.className = 'photo-item';
+      const img = document.createElement('img');
+      img.src = src;
+      img.addEventListener('click', function(){ openPhotoModal(src); });
+      const del = document.createElement('div');
+      del.className = 'photo-del';
+      del.textContent = '×';
+      del.addEventListener('click', function(){
+        photos.splice(idx, 1);
+        renderPhotos();
+      });
+      item.appendChild(img);
+      item.appendChild(del);
+      photoList.appendChild(item);
+    });
+  }
+
+  document.getElementById('addPhotoBtn').addEventListener('click', function(){
+    photoInput.click();
+  });
+
+  function compressImage(file, maxDim, quality){
+    return new Promise(function(resolve, reject){
+      const reader = new FileReader();
+      reader.onload = function(){
+        const img = new Image();
+        img.onload = function(){
+          let w = img.width, h = img.height;
+          if(w > maxDim || h > maxDim){
+            if(w > h){ h = Math.round(h * maxDim / w); w = maxDim; }
+            else { w = Math.round(w * maxDim / h); h = maxDim; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.onerror = reject;
+        img.src = reader.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  photoInput.addEventListener('change', function(e){
+    const files = Array.from(e.target.files || []);
+    if(files.length === 0) return;
+    Promise.all(files.map(function(file){
+      return compressImage(file, 1280, 0.75).catch(function(){ return null; });
+    })).then(function(results){
+      results.forEach(function(src){ if(src) photos.push(src); });
+      renderPhotos();
+    });
+    photoInput.value = '';
+  });
+
+  function currentKey(){
+    if(!yearInput.value || !monthInput.value || !dayInput.value) return null;
+    const yy = String(yearInput.value).padStart(4,'0');
+    const mm = String(monthInput.value).padStart(2,'0');
+    const dd = String(dayInput.value).padStart(2,'0');
+    return yy+'-'+mm+'-'+dd;
+  }
+
+  function allTextareas(){
+    return [q1, q2, q3, commentBox].concat(Array.from({length:9}, (_,i)=>document.getElementById('grat'+(i+1))));
+  }
+
+  function clearForm(){
+    q1.value=''; q2.value=''; q3.value='';
+    for(let i=1;i<=9;i++){document.getElementById('grat'+i).value='';}
+    commentBox.value='';
+    allTextareas().forEach(autosize);
+    setRecording('morning', null);
+    setRecording('night', null);
+    photos = [];
+    renderPhotos();
+  }
+
+  function fillForm(entry){
+    q1.value = entry.q1 || '';
+    q2.value = entry.q2 || '';
+    q3.value = entry.q3 || '';
+    (entry.gratitude || []).forEach((v,idx)=>{
+      const el = document.getElementById('grat'+(idx+1));
+      if(el) el.value = v;
+    });
+    commentBox.value = entry.comment || '';
+    allTextareas().forEach(autosize);
+    setRecording('morning', entry.audioMorning || null);
+    setRecording('night', entry.audioNight || null);
+    photos = (entry.photos || []).slice();
+    renderPhotos();
+  }
+
+  const DATE_LIST_COLLAPSE_COUNT = 3;
+  let dateListExpanded = false;
+
+  function renderList(activeKey){
+    const entries = loadEntries();
+    const keys = Object.keys(entries).sort().reverse();
+    dateListEl.innerHTML = '';
+    if(keys.length === 0){
+      const li = document.createElement('li');
+      li.innerHTML = '<div class="empty-note">아직 저장된 기록이 없어요</div>';
+      dateListEl.appendChild(li);
+      return;
+    }
+    if(activeKey && keys.indexOf(activeKey) >= DATE_LIST_COLLAPSE_COUNT){
+      dateListExpanded = true;
+    }
+    const visibleKeys = dateListExpanded ? keys : keys.slice(0, DATE_LIST_COLLAPSE_COUNT);
+    visibleKeys.forEach(key=>{
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#';
+      a.textContent = key;
+      if(key === activeKey) a.classList.add('active');
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        loadEntryByKey(key);
+      });
+      li.appendChild(a);
+      dateListEl.appendChild(li);
+    });
+    if(!dateListExpanded && keys.length > DATE_LIST_COLLAPSE_COUNT){
+      const li = document.createElement('li');
+      const more = document.createElement('a');
+      more.href = '#';
+      more.className = 'more-toggle';
+      more.textContent = '더보기 (' + (keys.length - DATE_LIST_COLLAPSE_COUNT) + '개 더)';
+      more.addEventListener('click', function(e){
+        e.preventDefault();
+        dateListExpanded = true;
+        renderList(activeKey);
+      });
+      li.appendChild(more);
+      dateListEl.appendChild(li);
+    } else if(dateListExpanded && keys.length > DATE_LIST_COLLAPSE_COUNT){
+      const li = document.createElement('li');
+      const less = document.createElement('a');
+      less.href = '#';
+      less.className = 'more-toggle';
+      less.textContent = '접기';
+      less.addEventListener('click', function(e){
+        e.preventDefault();
+        dateListExpanded = false;
+        renderList(activeKey);
+      });
+      li.appendChild(less);
+      dateListEl.appendChild(li);
+    }
+  }
+
+  function loadEntryByKey(key){
+    const entries = loadEntries();
+    const entry = entries[key];
+    if(!entry) return;
+    const [y,m,d] = key.split('-');
+    yearInput.value = parseInt(y,10);
+    monthInput.value = parseInt(m,10);
+    dayInput.value = parseInt(d,10);
+    fillForm(entry);
+    renderList(key);
+    statusMsg.textContent = key + ' 기록을 불러왔어요';
+  }
+
+  document.getElementById('saveBtn').addEventListener('click', function(){
+    const key = currentKey();
+    if(!key){
+      statusMsg.textContent = '년/월/일을 모두 입력해주세요';
+      return;
+    }
+    const entries = loadEntries();
+    entries[key] = {
+      q1: q1.value,
+      q2: q2.value,
+      q3: q3.value,
+      gratitude: Array.from({length:9}, (_,i)=>document.getElementById('grat'+(i+1)).value),
+      comment: commentBox.value,
+      audioMorning: recordings.morning,
+      audioNight: recordings.night,
+      photos: photos.slice()
+    };
+    const ok = saveEntries(entries);
+    if(!ok){
+      statusMsg.textContent = '저장 공간이 부족해요. 사진·녹음을 줄여보세요';
+      return;
+    }
+    renderList(key);
+    statusMsg.textContent = key + ' 저장 완료 🌅';
+  });
+
+  document.getElementById('newBtn').addEventListener('click', function(){
+    yearInput.value = '';
+    monthInput.value = '';
+    dayInput.value = '';
+    clearForm();
+    renderList(null);
+    statusMsg.textContent = '날짜를 입력하고 새 기록을 시작하세요';
+  });
+
+  document.getElementById('deleteBtn').addEventListener('click', function(){
+    const key = currentKey();
+    if(!key) return;
+    const entries = loadEntries();
+    if(!entries[key]){
+      statusMsg.textContent = '저장된 기록이 아니에요';
+      return;
+    }
+    delete entries[key];
+    saveEntries(entries);
+    clearForm();
+    renderList(null);
+    statusMsg.textContent = key + ' 삭제되었어요';
+  });
+
+  document.getElementById('exportBtn').addEventListener('click', function(){
+    const entries = loadEntries();
+    const keys = Object.keys(entries);
+    if(keys.length === 0){
+      statusMsg.textContent = '내보낼 기록이 없어요';
+      return;
+    }
+    const blob = new Blob([JSON.stringify(entries, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0,10).replace(/-/g,'');
+    a.href = url;
+    a.download = '오감완_백업_' + stamp + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    statusMsg.textContent = '기록 ' + keys.length + '건을 파일로 내보냈어요';
+  });
+
+  document.getElementById('importBtn').addEventListener('click', function(){
+    document.getElementById('importFile').click();
+  });
+
+  document.getElementById('importFile').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(){
+      let imported;
+      try{
+        imported = JSON.parse(reader.result);
+      }catch(err){
+        statusMsg.textContent = '파일을 읽지 못했어요 (JSON 형식이 아니에요)';
+        return;
+      }
+      const entries = loadEntries();
+      const merged = Object.assign({}, entries, imported);
+      saveEntries(merged);
+      renderList(null);
+      statusMsg.textContent = Object.keys(imported).length + '건을 가져와 합쳤어요';
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
+
+  // init
+  (function init(){
+    renderList(null);
+    allTextareas().forEach(autosize);
+  })();
+})();
+</script>
+</body>
+</html>
